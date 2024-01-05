@@ -100,12 +100,90 @@ function display_richiesta_monete()
 ?>
     <ul>
         <?php
+        unset($post_metas['co_checkbox_monete']);
         foreach ($post_metas as $key => $value) {
-            if ($key == 'totalone') {
-                $key = 'Prezzo';
+            switch ($key) {
+                case 'co_sterlina-regno-unito':
+                    echo '<li><strong>' . 'Sterlina (Regno Unito)</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_20-franchi-francesi-marengo':
+                    echo '<li><strong>' . '20 Franchi Francesi (Marengo)</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_20-lire-italiane-marengo':
+                    echo '<li><strong>' . '20 Lire Italiane (Marengo)</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_20-franchi-svizzeri-marengo':
+                    echo '<li><strong>' . '20 Franchi Svizzeri (Marengo)</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_krugerrand-sud-africa':
+                    echo '<li><strong>' . 'Krugerrand Sud Africa</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_4-ducati-austriaci':
+                    echo '<li><strong>' . '4 Ducati Austriaci</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_50-pesos-messicani':
+                    echo '<li><strong>' . '50 Pesos Messicani</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_20-marchi-tedeschi':
+                    echo '<li><strong>' . '20 Marchi Tedeschi</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_20-dollari-liberty':
+                    echo '<li><strong>' . '20 Dollari Liberty</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_10-dollari-liberty':
+                    echo '<li><strong>' . '10 Dollari Liberty</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_5-dollari-liberty':
+                    echo '<li><strong>' . '5 Dollari Liberty</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_20-dollari-statua':
+                    echo '<li><strong>' . '20 Dollari Statua</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_10-dollari-indiani':
+                    echo '<li><strong>' . '10 Dollari Indiani</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_5-dollari-indiani':
+                    echo '<li><strong>' . '5 Dollari Indiani</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_50-dollari-oncia':
+                    echo '<li><strong>' . '50 Dollari (oncia)</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_25-dollari-mezza-oncia':
+                    echo '<li><strong>' . '25 Dollari (mezza oncia)</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_10-dollari-un-quarto-di-oncia':
+                    echo '<li><strong>' . '10 Dollari (un quarto di oncia)</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_5-dollari-un-decimo-di-oncia':
+                    echo '<li><strong>' . '5 Dollari (un decimo di oncia)</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_100-soles-peruviani':
+                    echo '<li><strong>' . '100 Soles Peruviani</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_10-gulden-olandesi':
+                    echo '<li><strong>' . '10 Gulden Olandesi</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_50-dollari-canadesi':
+                    echo '<li><strong>' . '50 Dollari Canadesi</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_50-dollari-canadesi':
+                    echo '<li><strong>' . '50 Dollari Canadesi</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_nome_monete':
+                    echo '<li><strong>' . 'Nome Ordinante</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_email_monete':
+                    echo '<li><strong>' . 'e-mail Ordinante</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                case 'co_negozio_monete':
+                    echo '<li><strong>' . 'Punto Vendita</strong>: ' . esc_html($value[0]) . '</li>';
+                    break;
+                    /*case 'co_checkbox_monete':
+                    echo '';*/
+                case 'totalone':
+                    echo '<li><strong>' . 'Prezzo Bloccato: </strong>' . esc_html($value[0]) . '€</li>';
+                    break;
             }
-
-            echo '<li><strong>' . ucfirst($key) . '</strong>: ' . esc_html($value[0]) . '</li>';
         }
         ?>
     </ul>
@@ -179,10 +257,11 @@ function handle_enquiry_monete($data)
     $message = '';
     $message .= "{$field_co_nome_monete} ha bloccato il prezzo presso il punto vendita di {$field_co_negozio_monete}.<br />";
     $message .= "Il suo prezzo è di {$field_co_totale_monete} € con i seguenti dati:<br />";
+    unset($params['co_checkbox_monete']);
     foreach ($params as $chiave => $valore) {
         switch ($chiave) {
             case 'co_sterlina-regno-unito':
-                $message .= '<strong></strong>Sterlina (Regno Unito)</strong>: ' . $valore . '<br />>';
+                $message .= '<strong>Sterlina (Regno Unito)</strong>: ' . $valore . '<br />';
                 break;
             case 'co_20-franchi-francesi-marengo':
                 $message .= '<strong>20 Franchi Francesi (Marengo)</strong>: ' . $valore . '<br />';
@@ -256,9 +335,9 @@ function handle_enquiry_monete($data)
             case 'co_negozio_monete':
                 $message .= '<strong>Punto Vendita</strong>: ' . $valore . '<br />';
                 break;
-            case 'co_checkbox_monete':
+                /*case 'co_checkbox_monete':
                 $message .= '';
-                break;
+                break;*/
             case 'totalone':
                 $message .= '<strong>Prezzo Bloccato: </strong>' . $valore . '<br />';
                 break;
