@@ -178,7 +178,94 @@ function handle_enquiry_monete($data)
 
     $message = '';
     $message .= "{$field_co_nome_monete} ha bloccato il prezzo presso il punto vendita di {$field_co_negozio_monete}.<br />";
-    $message .= "Il suo prezzo è di {$field_co_totale_monete} €";
+    $message .= "Il suo prezzo è di {$field_co_totale_monete} € con i seguenti dati:<br />";
+    foreach ($params as $chiave => $valore) {
+        switch ($chiave) {
+            case 'co_sterlina-regno-unito':
+                $message .= '<strong></strong>Sterlina (Regno Unito)</strong>: ' . $valore;
+                break;
+            case 'co_20-franchi-francesi-marengo':
+                $message .= '<strong>20 Franchi Francesi (Marengo)</strong>: ' . $valore;
+                break;
+            case 'co_20-lire-italiane-marengo':
+                $message .= '<strong>20 Lire Italiane (Marengo)</strong>: ' . $valore;
+                break;
+            case 'co_20-franchi-svizzeri-marengo':
+                $message .= '<strong>20 Franchi Svizzeri (Marengo)</strong>: ' . $valore;
+                break;
+            case 'co_krugerrand-sud-africa':
+                $message .= '<strong>Krugerrand Sud Africa</strong>: ' . $valore;
+                break;
+            case 'co_4-ducati-austriaci':
+                $message .= '<strong>4 Ducati Austriaci</strong>: ' . $valore;
+                break;
+            case 'co_50-pesos-messicani':
+                $message .= '<strong>50 Pesos Messicani</strong>: ' . $valore;
+                break;
+            case 'co_20-marchi-tedeschi':
+                $message .= '<strong>20 Marchi Tedeschi</strong>: ' . $valore;
+                break;
+            case 'co_20-dollari-liberty':
+                $message .= '<strong>20 Dollari Liberty</strong>: ' . $valore;
+                break;
+            case 'co_10-dollari-liberty':
+                $message .= '<strong>10 Dollari Liberty</strong>: ' . $valore;
+                break;
+            case 'co_5-dollari-liberty':
+                $message .= '<strong>5 Dollari Liberty</strong>: ' . $valore;
+                break;
+            case 'co_20-dollari-statua':
+                $message .= '<strong>20 Dollari Statua</strong>: ' . $valore;
+                break;
+            case 'co_10-dollari-indiani':
+                $message .= '<strong>10 Dollari Indiani</strong>: ' . $valore;
+                break;
+            case 'co_5-dollari-indiani':
+                $message .= '<strong>5 Dollari Indiani</strong>: ' . $valore;
+                break;
+            case 'co_50-dollari-oncia':
+                $message .= '<strong>50 Dollari (oncia)</strong>: ' . $valore;
+                break;
+            case 'co_25-dollari-mezza-oncia':
+                $message .= '<strong>25 Dollari (mezza oncia)</strong>: ' . $valore;
+                break;
+            case 'co_10-dollari-un-quarto-di-oncia':
+                $message .= '<strong>10 Dollari (un quarto di oncia)</strong>: ' . $valore;
+                break;
+            case 'co_5-dollari-un-decimo-di-oncia':
+                $message .= '<strong>5 Dollari (un decimo di oncia)</strong>: ' . $valore;
+                break;
+            case 'co_100-soles-peruviani':
+                $message .= '<strong>100 Soles Peruviani</strong>: ' . $valore;
+                break;
+            case 'co_10-gulden-olandesi':
+                $message .= '<strong>10 Gulden Olandesi</strong>: ' . $valore;
+                break;
+            case 'co_50-dollari-canadesi':
+                $message .= '<strong>50 Dollari Canadesi</strong>: ' . $valore;
+                break;
+            case 'co_50-dollari-canadesi':
+                $message .= '<strong>50 Dollari Canadesi</strong>: ' . $valore;
+                break;
+            case 'co_nome_monete':
+                $message .= '<strong>Nome Ordinante</strong>: ' . $valore;
+                break;
+            case 'co_email_monete':
+                $message .= '<strong>e-mail Ordinante</strong>: ' . $valore;
+                break;
+            case 'co_negozio_monete':
+                $message .= '<strong>Punto Vendita</strong>: ' . $valore;
+                break;
+            case 'co_checkbox_monete':
+                $message .= '';
+                break;
+            case 'totalone':
+                $message .= '<strong>Prezzo Bloccato: </strong>' . $valore;
+                break;
+        }
+
+        $message .= $chiave . ": " . $valore;
+    }
 
     $postarr_monete = [
         'post_title' => $field_co_nome_monete,

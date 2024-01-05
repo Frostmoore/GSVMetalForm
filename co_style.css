@@ -157,8 +157,8 @@ input[type=number] {
 
 .co_column_monete {
     display: inline-block;
-    max-width: 24%;
-    margin: 0;
+    max-width: 20%;
+    margin: 15px;
     padding: 5px;
     text-align: center;
     height: 400px;
